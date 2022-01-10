@@ -22,8 +22,11 @@ apt install wget
 wget -P ${ZDOTDIR:-$HOME} https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
 
-echo "enter the theme you want to put on your terminal by default agnoster will
-come as the main theme."
+echo "
+
+Enter the theme you want to put on your terminal by default agnoster will
+come as the main theme.
+"
 if [[ "yes" == $(ask_yes_or_no "want to change the default Zsh theme?") ]]
 then
 	read -p "Theme: " themeZsh
@@ -34,19 +37,33 @@ then
 		sed -i "s|robbyrussell|$themeZsh|" ${ZDOTDIR:-$HOME}/.zshrc
 	fi
 else
-	echo "<================================ OK ================================>"
+	echo "
+
+<================================ OK ================================>
+
+"
 fi
 
 sed -i "s|plugins=(git)|$pluginsZsh|" ${ZDOTDIR:-$HOME}/.zshrc
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+echo "
 
+<================================ OK ================================>
+
+"
 if [[ "yes" == $(ask_yes_or_no "do you want to have the logo of your Linux distribution?") ]]
 then
 	apt-get install screenfetch -y
 	echo "
 screenfetch" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
+
+echo "
+
+<================================ OK ================================>
+
+"
 
 if [[ "yes" == $(ask_yes_or_no "do you want to install with vim plugins?") ]]
 then
@@ -57,7 +74,7 @@ fi
 
 cp ${ZDOTDIR:-$HOME}
 echo "
-sudo zsh" >> ../.bashrc
+sudo zsh" >> ../.bashrc;
 
+clear
 zsh
-vim
