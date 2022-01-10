@@ -56,6 +56,8 @@ else
 fi
 
 cp ${ZDOTDIR:-$HOME}
+echo "
+sudo zsh" >> ../.bashrc
 
 zsh
 vim
