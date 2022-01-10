@@ -19,7 +19,7 @@ apt install curl
 apt-get install zsh -y
 apt-get install git-core -y
 apt install wget
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+wget -P ${ZDOTDIR:-$HOME} https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
 
 echo "enter the theme you want to put on your terminal by default agnoster will
@@ -38,8 +38,8 @@ else
 fi
 
 sed -i "s|plugins=(git)|$pluginsZsh|" ${ZDOTDIR:-$HOME}/.zshrc
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 if [[ "yes" == $(ask_yes_or_no "do you want to have the logo of your Linux distribution?") ]]
 then
@@ -54,6 +54,8 @@ then
 else
 	echo "No plugins"
 fi
+
+cp ${ZDOTDIR:-$HOME}
 
 zsh
 vim
