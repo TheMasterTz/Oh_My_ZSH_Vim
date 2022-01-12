@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 source configColor.ini
 source ./progress_bar.sh
+source ./bar_color.sh
 
 function ask_yes_or_no() {
     read -p "$1 ([y]es or [N]o): "
