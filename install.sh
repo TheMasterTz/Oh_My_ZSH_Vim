@@ -12,11 +12,10 @@ function ask_yes_or_no() {
 
 pluginsZsh="plugins=(\n\tgit\n\tbundler\n\tdotenv\n\tmacos\n\trake\n\truby\n\tzsh-syntax-highlighting\n\tzsh-autosuggestions\n)"
 
-source ~/.oh-my-zsh/tools/uninstall.sh
-rm -rf ~/.oh-my-zsh
-rm ~/.zshrc
-
-sudo apt remove zsh -y;  sudo apt purge zsh -y; sudo apt autoremove -y
+source ~/.oh-my-zsh/tools/uninstall.sh -y
+rm -rf ~/.oh-my-zsh -y
+rm ~/.zshrc -y
+apt remove zsh -y;  apt purge zsh -y; apt autoremove -y
 
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
@@ -66,11 +65,7 @@ ${Color_Off}${On_Black}root@ubuntu ${Black}${On_Blue} ~/Oh_My_ZSH_Vim ${Blue}
 		block_progress_bar 60
 	fi
 else
-	echo -e "
-${Green}
-<================================ OK ================================>
-${Color_Off}
-"
+	test_ "OK" 10
 	block_progress_bar 60
 fi
 clear
@@ -79,12 +74,10 @@ sed -i "s|plugins=(git)|$pluginsZsh|" ${ZDOTDIR:-$HOME}/.zshrc
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 block_progress_bar 70
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
 block_progress_bar 75
-echo -e "
-${Green}
-<================================ OK ================================>
-${Color_Off}
-"
+test_ "OK" 10
+
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
@@ -110,11 +103,7 @@ else
 	block_progress_bar 80
 fi
 
-echo -e "
-${Green}
-<================================ OK ================================>
-${Color_Off}
-"
+test_ "OK" 10
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
@@ -135,12 +124,8 @@ echo "
 sudo zsh" >> ../.bashrc;
 block_progress_bar 95
 
-clear
 block_progress_bar 100
-echo -e "
-${Green}
-<================================ DONE ================================>
-${Color_Off}
-"
-
+multicolor_ "DONE" 5
+sleep 1
+clear
 zsh
