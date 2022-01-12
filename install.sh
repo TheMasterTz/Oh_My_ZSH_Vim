@@ -11,6 +11,13 @@ function ask_yes_or_no() {
 }
 
 pluginsZsh="plugins=(\n\tgit\n\tbundler\n\tdotenv\n\tmacos\n\trake\n\truby\n\tzsh-syntax-highlighting\n\tzsh-autosuggestions\n)"
+
+source ~/.oh-my-zsh/tools/uninstall.sh
+rm -rf ~/.oh-my-zsh
+rm ~/.zshrc
+
+sudo apt remove zsh -y;  sudo apt purge zsh -y; sudo apt autoremove -y
+
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
@@ -85,9 +92,18 @@ echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red
 block_progress_bar 75
 if [[ "yes" == $(ask_yes_or_no "do you want to have the logo of your Linux distribution?") ]]
 then
+	var=$(grep -c screenfetch ${ZDOTDIR:-$HOME}/.zshrc)
 	apt-get install screenfetch -y
-	echo "
+	if [[ 0 -eq ${var} ]]
+	then
+		echo "
 screenfetch" >> ${ZDOTDIR:-$HOME}/.zshrc
+	elif [[ 1 -gt ${var} ]]
+	then
+		sed -i "s|screenfetch||" ${ZDOTDIR:-$HOME}/.zshrc
+		echo "
+screenfetch" >> ${ZDOTDIR:-$HOME}/.zshrc
+	fi
 	block_progress_bar 80
 else
 	echo "ok :("
