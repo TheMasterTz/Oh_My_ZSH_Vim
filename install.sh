@@ -30,11 +30,9 @@ apt-get install git-core -y
 apt install wget
 draw_progress_bar 53
 wget -P ${ZDOTDIR:-$HOME} https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-draw_progress_bar 57
 chsh -s `which zsh`
 
 clear
-draw_progress_bar 57
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
 "
@@ -44,6 +42,7 @@ Enter the theme you want to put on your terminal by default agnoster will
 come as the main theme.
 ${BIWhite}
 "
+draw_progress_bar 57
 if [[ "yes" == $(ask_yes_or_no "want to change the default Zsh theme?") ]]
 then
 	echo -e "
@@ -74,12 +73,15 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR:-$H
 block_progress_bar 70
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 block_progress_bar 75
-echo "
-
+echo -e "
+${Green}
 <================================ OK ================================>
-
+${Color_Off}
 "
 clear
+echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
+
+"
 block_progress_bar 75
 if [[ "yes" == $(ask_yes_or_no "do you want to have the logo of your Linux distribution?") ]]
 then
@@ -98,11 +100,10 @@ ${Green}
 ${Color_Off}
 "
 clear
-block_progress_bar 85
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
 "
-
+block_progress_bar 85
 if [[ "yes" == $(ask_yes_or_no "do you want to install with vim plugins?") ]]
 then
     cp .vimrc ${ZDOTDIR:-$HOME}
