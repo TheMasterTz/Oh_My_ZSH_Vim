@@ -66,7 +66,7 @@ ${Color_Off}${On_Black}root@ubuntu ${Black}${On_Blue} ~/Oh_My_ZSH_Vim ${Blue}
 		block_progress_bar 60
 	fi
 else
-	test_ "OK" 10
+	test_ "OK" 10 ${Green}
 	block_progress_bar 60
 fi
 clear
@@ -77,7 +77,7 @@ block_progress_bar 70
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZDOTDIR:-$HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 block_progress_bar 75
-test_ "OK" 10
+test_ "OK" 10 ${Green}
 
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
@@ -104,7 +104,7 @@ else
 	block_progress_bar 80
 fi
 
-test_ "OK" 10
+test_ "OK" 10 ${Green}
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
