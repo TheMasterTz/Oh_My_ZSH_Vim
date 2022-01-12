@@ -11,6 +11,7 @@ function test_() {
 	${3}<=${string} ${1} ${string}=>${Color_Off}
 
 	"
+	sleep 1
 }
 
 
