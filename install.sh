@@ -16,25 +16,25 @@ pluginsZsh="plugins=(\n\tgit\n\tbundler\n\tdotenv\n\tmacos\n\trake\n\truby\n\tzs
 source ~/.oh-my-zsh/tools/uninstall.sh -y
 rm -rf ~/.oh-my-zsh -y
 rm ~/.zshrc -y
-apt remove zsh -y;  apt purge zsh -y; apt autoremove -y
+sudo apt remove zsh -y;  apt purge zsh -y; apt autoremove -y
 
 clear
 echo -e "${Green}<${Yellow}================================${Color_Off} ${On_Red}${BIWhite}On_Redcustomizing your terminal${Color_Off} ${Yellow}================================${Green}>${Color_Off}
 
 "
 draw_progress_bar 0
-apt update
+sudo apt update
 draw_progress_bar 20
-apt upgrade -y
+sudo apt upgrade -y
 draw_progress_bar 35
-apt install vim -y
+sudo apt install vim -y
 draw_progress_bar 40
-apt install curl
+sudo apt install curl
 draw_progress_bar 45
-apt-get install zsh -y
+sudo apt-get install zsh -y
 draw_progress_bar 50
-apt-get install git-core -y
-apt install wget
+sudo apt-get install git-core -y
+sudo apt install wget
 draw_progress_bar 53
 wget -P ${ZDOTDIR:-$HOME} https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
@@ -87,7 +87,7 @@ block_progress_bar 75
 if [[ "yes" == $(ask_yes_or_no "do you want to have the logo of your Linux distribution?") ]]
 then
 	var=$(grep -c screenfetch ${ZDOTDIR:-$HOME}/.zshrc)
-	apt-get install screenfetch -y
+	sudo apt-get install screenfetch -y
 	if [[ 0 -eq ${var} ]]
 	then
 		echo "
