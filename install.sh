@@ -122,7 +122,7 @@ fi
 cp ${ZDOTDIR:-$HOME}
 block_progress_bar 92
 echo "
-sudo zsh" >> ../.bashrc;
+zsh" >> ../.bashrc;
 block_progress_bar 95
 
 block_progress_bar 100
